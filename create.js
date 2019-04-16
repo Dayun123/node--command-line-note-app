@@ -2,6 +2,8 @@
 // node app.js create --title="Title" --body="Body"
 // optional aliases -t and -b
 
+const utils = require('./utils.js')
+
 exports.command = 'create'
 
 exports.describe = '### create a note with --title="Title" --body="Body" ###'
@@ -25,5 +27,5 @@ exports.builder = {
 
 exports.handler = function (argv) {
   // do something with argv.
-  console.log(argv.title, argv.body)
+  utils.create(argv.title, argv.body)
 }

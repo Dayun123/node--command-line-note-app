@@ -1,0 +1,31 @@
+{
+  "name": "-command-line-note-app",
+  "version": "1.0.0",
+  "description": "Simple Command Line App For Note Taking",
+  "main": "app.js",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "yargs": "^13.2.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dayun123/node--command-line-note-app.git"
+  },
+  "keywords": [
+    "Node",
+    "Yargs",
+    "Command",
+    "Line",
+    "Note"
+  ],
+  "author": "Daniel Schroeder",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/Dayun123/node--command-line-note-app/issues"
+  },
+  "homepage": "https://github.com/Dayun123/node--command-line-note-app#readme"
+}
