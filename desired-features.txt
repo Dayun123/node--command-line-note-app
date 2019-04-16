@@ -1,0 +1,51 @@
+This app should exhibit the following functionality:
+
+- Note creation with a title and a body in the form:
+    node app.js create --title='title' --body='body'
+  or the shorthand form:
+    node app.js create -t='title' -b='body'
+- Read, update, and delete notes
+- List all notes
+- Have a good help menu on the command line
+- Use chalk or some similar library to make the command line output colored
+- Command line output should be very informative and well formatted.
+
+Examples
+
+Adding a note:
+
+########################################################################
+node app.js create -t='Grocery List' -b='Eggs, Ham, Cheese, Bread'
+
+Created New Note: Grocery List (this could be colored)
+
+Current Notes:
+
+  -- Title --     ||  -- Body --
+  Allie Presents  || Trip To Port Arthur, Spa Day
+  Dog Stuff       || Vet Appointment, Flea Medicine
+* Grocery List    || Eggs, Ham, Cheese, Bread (this could be colored)
+#########################################################################
+
+
+Removing a note:
+
+#########################################################################
+node app.js delete -t='Grocery List'
+
+Removed Note: Grocery List (this could be colored)
+
+Current Notes:
+
+  -- Title --     ||  -- Body --
+  Allie Presents  || Trip To Port Arthur, Spa Day
+  Dog Stuff       || Vet Appointment, Flea Medicine
+
+(removed)
+- Grocery List    || Eggs, Ham, Cheese, Bread (this could be colored)
+########################################################################
+
+Libraries to use:
+
+yargs for parsing command line input
+chalk for coloring command line output
