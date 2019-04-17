@@ -3,6 +3,8 @@
 // optional aliases -t and -b
 
 const utils = require('./utils.js')
+const yargs = require('yargs')
+const chalk = require('chalk')
 
 exports.command = 'create'
 
@@ -15,17 +17,24 @@ exports.builder = {
     alias: 't',
     demandOption: true,
     describe: 'Note title',
+    requiresArg: 'string',
     string: true
   },
   body: {
     alias: 'b',
     demandOption: true,
     describe: 'Note body',
+    requiresArg: 'string',
     string: true
   }
 }
 
 exports.handler = function (argv) {
-  // do something with argv.
-  utils.create(argv.title, argv.body)
+  // require a title and body value in order to create a note
+  if (argv.title && argv.body) {
+    utils.create(argv.title, argv.body)
+  } else {
+    utils.logMsg('error', '\nMust have a title and a body value to create a note!\n')
+    yargs.showHelp()
+  }
 }

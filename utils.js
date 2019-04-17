@@ -12,6 +12,7 @@
 
 const l = console.log
 const fs = require('fs')
+const chalk = require('chalk')
 const dataStorePath = './notes.json'
 
 const create = (title, body) => {
@@ -24,10 +25,19 @@ const create = (title, body) => {
       title: title,
       body: body
     })
-    l('Saving the note')
-    saveNotes(notes)
+
+    saveNotes(notes) ? logMsg('success', `Created new note: ${title}`) : logMsg('error',`Error writing to the file system, note ${title} not saved!`)
+  
   } else {
-    l('Title already taken!')
+    logMsg('error', 'Title already taken!')
+  }
+}
+
+const logMsg = (type, msg) => {
+  if (type === 'success') {
+    l(chalk.greenBright(msg))
+  } else if (type === 'error') {
+    l(chalk.redBright(msg))
   }
 }
 
@@ -46,7 +56,13 @@ const loadNotes = () => {
 }
 
 const saveNotes = (notes) => {
-  fs.writeFileSync(dataStorePath, JSON.stringify(notes))
+  try {  
+    fs.writeFileSync(dataStorePath, JSON.stringify(notes))
+    return true
+  }
+  catch (e) {
+    return false
+  }
 }
 
 const isUniqueTitle = (notes, title) => {
@@ -54,8 +70,7 @@ const isUniqueTitle = (notes, title) => {
   return !(notes.some(note => note.title === title))
 }
 
-
-
 module.exports = {
-  create: create
+  create: create,
+  logMsg: logMsg
 }
