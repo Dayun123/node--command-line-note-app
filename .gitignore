@@ -59,3 +59,6 @@ typings/
 
 # next.js build output
 .next
+
+# notes.json is where we store notes, no need to have that in the repo
+notes.json

@@ -10,9 +10,10 @@
 //  }
 // ]
 
-const l = console.log
 const fs = require('fs')
-const chalk = require('chalk')
+
+const log = require('./log')
+
 const dataStorePath = './notes.json'
 
 const create = (title, body) => {
@@ -26,20 +27,14 @@ const create = (title, body) => {
       body: body
     })
 
-    saveNotes(notes) ? logMsg('success', `Created new note: ${title}`) : logMsg('error',`Error writing to the file system, note ${title} not saved!`)
+    saveNotes(notes) ? log.logMsg('success', `Created new note: ${title}`) : log.logMsg('error',`Error writing to the file system, note ${title} not saved!`)
   
   } else {
-    logMsg('error', 'Title already taken!')
+    log.logMsg('error', 'Title already taken!')
   }
 }
 
-const logMsg = (type, msg) => {
-  if (type === 'success') {
-    l(chalk.greenBright(msg))
-  } else if (type === 'error') {
-    l(chalk.redBright(msg))
-  }
-}
+
 
 // ############### HELPER FUNCTIONS ##################### //
 
@@ -71,6 +66,5 @@ const isUniqueTitle = (notes, title) => {
 }
 
 module.exports = {
-  create: create,
-  logMsg: logMsg
+  create: create
 }

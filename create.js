@@ -2,9 +2,11 @@
 // node app.js create --title="Title" --body="Body"
 // optional aliases -t and -b
 
-const utils = require('./utils.js')
+
 const yargs = require('yargs')
-const chalk = require('chalk')
+
+const utils = require('./utils')
+const log = require('./log')
 
 exports.command = 'create'
 
@@ -34,7 +36,7 @@ exports.handler = function (argv) {
   if (argv.title && argv.body) {
     utils.create(argv.title, argv.body)
   } else {
-    utils.logMsg('error', '\nMust have a title and a body value to create a note!\n')
+    log.logMsg('error', '\nMust have a title and a body value to create a note!\n')
     yargs.showHelp()
   }
 }
