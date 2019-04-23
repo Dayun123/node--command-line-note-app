@@ -34,6 +34,9 @@ const create = (title, body) => {
   }
 }
 
+const list = () => {
+  log.logMsg('success', 'List function working!')
+}
 
 
 // ############### HELPER FUNCTIONS ##################### //
@@ -66,5 +69,6 @@ const isUniqueTitle = (notes, title) => {
 }
 
 module.exports = {
-  create: create
+  create: create,
+  list: list
 }
